@@ -14,23 +14,20 @@ const PADDINGS = {
   XSMALL: 3,
   SMALL: 4.5,
   MEDIUM: 6.5,
-  LARGE: 9.5,
+  LARGE: 9.5
 };
-
 const HORIZONTAL_PADDINGS = {
   XSMALL: 11,
   SMALL: 14,
   MEDIUM: 16,
-  LARGE: 20,
+  LARGE: 20
 };
-
 const MIN_WIDTH = {
   XSMALL: 66,
   SMALL: 70,
   MEDIUM: 77,
-  LARGE: 90,
+  LARGE: 90
 };
-
 const DEFAULT_SIZE = 'large';
 
 /**
@@ -146,30 +143,24 @@ export default class Button extends BaseComponent {
     /**
      * the direction of the animation ('left' and 'right' will effect the button's own alignment)
      */
-    animateTo: PropTypes.oneOf(['center', 'left', 'right']),
-    /**
-     * Use to identify the button in tests
-     */
-    testID: PropTypes.string,
+    animateTo: PropTypes.oneOf(['center', 'left', 'right'])
   };
 
   static defaultProps = {
-    // size: 'large',
-    // outline: false,
-    iconOnRight: false,
+    iconOnRight: false
   };
 
   static sizes = {
     xSmall: 'xSmall',
     small: 'small',
     medium: 'medium',
-    large: 'large',
+    large: 'large'
   };
 
   static animationDirection = {
     center: 'center',
     left: 'left',
-    right: 'right',
+    right: 'right'
   };
 
   constructor(props) {
@@ -180,8 +171,8 @@ export default class Button extends BaseComponent {
     }
   }
 
-  componentDidUpdate() {
-    if (this.props.animateLayout) {
+  componentDidUpdate(prevProps) {
+    if (this.props.animateLayout && !_.isEqual(prevProps, this.props)) {
       LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
     }
   }
@@ -194,7 +185,7 @@ export default class Button extends BaseComponent {
       const size = height >= width ? height : width;
       this.setState({size});
     }
-    
+
     if (Constants.isAndroid && Platform.Version <= 17) {
       this.setState({borderRadius: height / 2});
     }
@@ -280,29 +271,29 @@ export default class Button extends BaseComponent {
     const outlineWidth = this.getThemeProps().outlineWidth || 1;
 
     const CONTAINER_STYLE_BY_SIZE = {};
-    CONTAINER_STYLE_BY_SIZE[Button.sizes.xSmall] = round ? 
-    {height: this.state.size, width: this.state.size, padding: PADDINGS.XSMALL} : 
+    CONTAINER_STYLE_BY_SIZE[Button.sizes.xSmall] = round ?
+    {height: this.state.size, width: this.state.size, padding: PADDINGS.XSMALL} :
     {
       paddingVertical: PADDINGS.XSMALL,
       paddingHorizontal: HORIZONTAL_PADDINGS.XSMALL,
       minWidth: MIN_WIDTH.XSMALL,
     };
     CONTAINER_STYLE_BY_SIZE[Button.sizes.small] = round ?
-    {height: this.state.size, width: this.state.size, padding: PADDINGS.SMALL} : 
+    {height: this.state.size, width: this.state.size, padding: PADDINGS.SMALL} :
     {
       paddingVertical: PADDINGS.SMALL,
       paddingHorizontal: HORIZONTAL_PADDINGS.SMALL,
       minWidth: MIN_WIDTH.SMALL,
     };
-    CONTAINER_STYLE_BY_SIZE[Button.sizes.medium] = round ? 
-    {height: this.state.size, width: this.state.size, padding: PADDINGS.MEDIUM} : 
+    CONTAINER_STYLE_BY_SIZE[Button.sizes.medium] = round ?
+    {height: this.state.size, width: this.state.size, padding: PADDINGS.MEDIUM} :
     {
       paddingVertical: PADDINGS.MEDIUM,
       paddingHorizontal: HORIZONTAL_PADDINGS.MEDIUM,
       minWidth: MIN_WIDTH.MEDIUM,
     };
-    CONTAINER_STYLE_BY_SIZE[Button.sizes.large] = round ? 
-    {height: this.state.size, width: this.state.size, padding: PADDINGS.LARGE} : 
+    CONTAINER_STYLE_BY_SIZE[Button.sizes.large] = round ?
+    {height: this.state.size, width: this.state.size, padding: PADDINGS.LARGE} :
     {
       paddingVertical: PADDINGS.LARGE,
       paddingHorizontal: HORIZONTAL_PADDINGS.LARGE,
@@ -338,6 +329,7 @@ export default class Button extends BaseComponent {
 
   getOutlineStyle() {
     const {outline, outlineColor, outlineWidth, link, disabled} = this.getThemeProps();
+
     let outlineStyle;
     if ((outline || outlineColor) && !link) {
       outlineStyle = {
@@ -414,12 +406,13 @@ export default class Button extends BaseComponent {
 
   renderIcon() {
     const {iconSource} = this.props;
+
     if (iconSource) {
       const iconStyle = this.getIconStyle();
       if (typeof iconSource === 'function') {
         return iconSource(iconStyle);
       } else {
-        return <Image source={iconSource} style={iconStyle} />;
+        return <Image source={iconSource} style={iconStyle}/>;
       }
     }
     return null;
@@ -430,6 +423,7 @@ export default class Button extends BaseComponent {
     const typography = this.extractTypographyValue();
     const color = this.getLabelColor();
     const labelSizeStyle = this.getLabelSizeStyle();
+
     if (label) {
       return (
         <Text
@@ -475,6 +469,7 @@ export default class Button extends BaseComponent {
         disabled={disabled}
         testID={testID}
         {...others}
+        ref={this.setRef}
       >
         <View row centerV>
           {this.props.children}
@@ -491,7 +486,7 @@ function createStyles() {
     container: {
       backgroundColor: 'transparent',
       justifyContent: 'center',
-      alignItems: 'center',
+      alignItems: 'center'
     },
     containerDisabled: {
       backgroundColor: Colors.dark60,
@@ -501,21 +496,21 @@ function createStyles() {
       paddingHorizontal: undefined,
       paddingVertical: undefined,
       borderRadius: BorderRadiuses.br0,
-      backgroundColor: undefined,
+      backgroundColor: undefined
     },
     shadowStyle: {
       shadowColor: Colors.blue10,
       shadowOffset: {height: 5, width: 0},
       shadowOpacity: 0.35,
       shadowRadius: 9.5,
-      elevation: 2,
+      elevation: 2
     },
     text: {
       backgroundColor: 'transparent',
       flex: 0,
       flexDirection: 'row',
       ...Typography.text70,
-      fontWeight: '100',
-    },
+      fontWeight: '100'
+    }
   });
 }

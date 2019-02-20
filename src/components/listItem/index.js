@@ -2,7 +2,7 @@ import _ from 'lodash';
 import PropTypes from 'prop-types';
 import React from 'react';
 import {StyleSheet} from 'react-native';
-import * as Animatable from 'react-native-animatable';
+import {View as AnimatableView} from 'react-native-animatable';
 import {Colors} from '../../style';
 import {BaseComponent} from '../../commons';
 import TouchableOpacity from '../../components/touchableOpacity';
@@ -41,11 +41,7 @@ class ListItem extends BaseComponent {
     /**
      * The container element to wrap the ListItem
      */
-    containerElement: PropTypes.func,
-    /**
-     * Use to identify the ListItem in tests
-     */
-    testID: PropTypes.string,
+    containerElement: PropTypes.func
   };
 
   static defaultProps = {
@@ -87,13 +83,12 @@ class ListItem extends BaseComponent {
       ...others
     } = this.props;
     const {pressed} = this.state;
-    // const containerStyle = this.extractContainerStyle(this.props);
     const pressedStyle = {backgroundColor: underlayColor};
     const Container = (onPress || onLongPress) ? containerElement : View;
 
     const animationProps = this.extractAnimationProps();
-    const InnerContainer = !_.isEmpty(animationProps) ? Animatable.View : View;
-    if (animationProps) {
+    const InnerContainer = !_.isEmpty(animationProps) ? AnimatableView : View;
+    if (!_.isEmpty(animationProps)) {
       console.warn('ListItem component will soon stop supporting animationProps.' +
         'Please wrap your ListItem component with your own animation component, such as Animatable.View');
     }
@@ -127,8 +122,8 @@ function createStyles({height}) {
     },
     innerContainer: {
       flexDirection: 'row',
-      height,
-    },
+      height
+    }
   });
 }
 
