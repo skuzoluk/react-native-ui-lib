@@ -16,6 +16,7 @@ module.exports = {
   get ConnectionStatusBar() { return require('./components').ConnectionStatusBar; },
   get Dialog() { return require('./components').Dialog; },
   get FeatureHighlight() { return require('./components').FeatureHighlight; },
+  get Hint() { return require('./components').Hint; },
   get Image() { return require('./components').Image; },
   get TextArea() { return require('./components').TextArea; },
   get TextField() { return require('./components').TextField; },
@@ -24,6 +25,7 @@ module.exports = {
   get ListItem() { return require('./components').ListItem; },
   get Notification() { return require('./components').Notification; },
   get PageControl() { return require('./components').PageControl; },
+  get PanGestureView() { return require('./components').PanGestureView; },
   get Picker() { return require('./components').Picker; },
   get Stepper() { return require('./components').Stepper; },
   get TabBar() { return require('./components').TabBar; },
@@ -45,6 +47,8 @@ module.exports = {
   get BaseComponent() { return require('./commons').BaseComponent; },
   get PureBaseComponent() { return require('./commons').PureBaseComponent; },
   get SelectableComponent() { return require('./commons').SelectableComponent; },
+  get UIComponent() { return require('./commons').UIComponent; },
+  get forwardRef() { return require('./commons').forwardRef; },
 
   // Helpers
   get AvatarHelper() { return require('./helpers').AvatarHelper; },
