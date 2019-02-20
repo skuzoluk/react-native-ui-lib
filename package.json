@@ -38,14 +38,15 @@
   },
   "dependencies": {
     "babel-plugin-transform-inline-environment-variables": "^0.0.2",
-    "hoist-non-react-statics": "^2.3.0",
+    "color": "^3.1.0",
+    "hoist-non-react-statics": "^3.0.0",
     "lodash": "^4.0.0",
-    "onecolor": "^3.1.0",
     "prop-types": "^15.5.10",
     "react-native-animatable": "^1.1.0",
     "react-native-blur": "^3.1.1",
     "react-native-interactable": "1.0.0-alpha.1",
     "react-native-swipe-gestures": "^1.0.2",
+    "react-native-text-size": "^2.0.4",
     "semver": "^5.5.0",
     "url-parse": "^1.2.0"
   },
@@ -77,13 +78,13 @@
     "react-native": "0.57.3",
     "react-native-keyboard-aware-scrollview": "^2.0.0",
     "react-native-keyboard-tracking-view": "^5.3.2",
-    "react-native-navigation": "^2.0.2587",
+    "react-native-navigation": "^2.3.0",
     "shell-utils": "^1.0.10",
     "typescript": "^2.9.2"
   },
   "peerDependencies": {
-    "react": "^16.0.0",
-    "react-native": "^0.51.0"
+    "react": ">=16.0.0",
+    "react-native": ">=0.51.0"
   },
   "jest": {
     "preset": "react-native",

@@ -10,6 +10,7 @@ module.exports = {
   get ConnectionStatusBar() { return require('./connectionStatusBar').default; },
   get Dialog() { return require('./dialog').default; },
   get FeatureHighlight() { return require('./featureHighlight').default; },
+  get Hint() { return require('./hint').default; },
   get Image() { return require('./image').default; },
 
   get TextArea() { return require('./inputs').TextArea; },
@@ -20,6 +21,7 @@ module.exports = {
   get ListItem() { return require('./listItem').default; },
   get Notification() { return require('./notification').default; },
   get PageControl() { return require('./pageControl').default; },
+  get PanGestureView() { return require('./panGestureView').default; },
   get Picker() { return require('./picker').default; },
   get Stepper() { return require('./stepper').default; },
   get TabBar() { return require('./tabBar').default; },
